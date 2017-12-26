@@ -1,0 +1,263 @@
+/*
+	Nilkanth Patel / Portfolio
+
+	Author: Nilkanth Patel
+	Email: me@nilkanthpatel.com
+
+	Description: Styles to be re-used across the site.
+
+*/
+
+@mixin h1 {
+	font-size: 72px;
+	font-weight: 400;
+}
+
+@mixin h2 {
+	font-size: 36px;
+	font-weight: 100;
+	color: map-get($colors, gray-dark);
+}
+
+@mixin h3 {
+	font-size: 20px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: 400;
+	text-align:center;
+}
+
+@mixin h4 {
+	font-size: 13px;
+	font-weight: 600;
+}
+
+/* Shapes for the icons */
+
+@mixin square-fill($width, $color) {
+	width: $width;
+	padding-top: $width;
+	background: $color;
+	position:absolute;
+}
+
+@mixin square-border($width, $border, $color) {
+	width:$width;
+	padding-top: calc( #{$width} - ( #{$border} * 2 ));
+	border: $border solid $color;
+	position:absolute;
+	z-index:1;
+}
+
+@mixin triangle-fill($color) {
+	fill: $color;
+}
+
+@mixin triangle-border($border, $color) {
+	fill:none;
+	stroke-width: $border;
+	stroke: $color;
+	stroke-alignment: inside;
+}
+
+@mixin circle-border($width, $border, $color) {
+	width:$width;
+	padding-top: calc( #{$width} - ( #{$border} * 2 ));
+	border: $border solid $color;
+	border-radius:50%;
+	position:absolute;
+	z-index:1;
+}
+
+@mixin circle-fill($width, $color) {
+	width: $width;
+	padding-top: $width;
+	background: $color;
+	border-radius:50%;
+	position:absolute;
+}
+
+@mixin line-border($width, $border, $color) {
+	width: $width;
+	height: $border;
+	background: $color;
+	position:absolute;
+}
+
+@mixin phase-icon($width) {
+	height: #{$width}px;
+	min-height: #{$width}px;
+	width: #{$width}px;
+	min-width: #{$width}px;
+}
+
+@mixin phase-1-icon($width) {
+	.phase-icon {
+		
+		@include phase-icon($width)
+
+		.index-1 {
+			polygon {
+				@include triangle-border($icon-border, map-get($colors,phase-1));
+				transition:1s all ease;
+			}
+			position:absolute;
+			overflow:visible;
+			left:0;
+			top:0;
+			transition:1s all ease;
+			width: #{ $width*3/4 }px;
+		}
+		.index-2 {
+			polygon {
+				@include triangle-fill(map-get($colors,phase-1));
+			}
+			position:absolute;
+			left:37.5%;
+			top:37.5%;
+			width: #{ $width/4 }px;
+		}
+		.index-3 {
+			@include circle-border(50%, $icon-border, map-get($colors,phase-1));
+			left:50%;
+			top:50%;
+		}
+		&:hover {
+			.index-1 {
+				left:74%;
+				top:calc(100% + #{$icon-border});
+				polygon { 
+					transform:rotate(180deg) scale(.67);
+					stroke-width:#{$icon-border*1.5};
+					position:absolute;
+				}
+			}
+			.index-2 {
+				top:50%;
+			}
+			.index-3 {
+				left:calc(25% - #{$icon-border});
+				top:#{$icon-border};
+			}
+		}
+	}
+}
+
+@mixin phase-2-icon($width) {
+	.phase-icon {
+		
+		@include phase-icon($width)
+
+		
+		.index-1 {
+			@include square-border(75%, $icon-border, map-get($colors,phase-2));
+			top:0;
+			left:0;
+		}
+		.index-2 {
+			@include square-fill(25%, map-get($colors,phase-2));
+			left:37.5%;
+			top:37.5%;
+		}
+		.index-3 {
+			polygon {
+				@include triangle-border($icon-border, map-get($colors,phase-2));
+			}
+			overflow:visible;
+			left:50%;
+			top:50%;
+			position:absolute;
+			width: #{ $width/2 }px;
+		}
+		&:hover {
+			.index-1 {
+				width:33.33%;
+				padding-top:calc(33.33% - (#{$icon-border} * 2));
+				left:33.33%;
+				top:33.33%;
+			}
+			.index-2 {
+				width:33.33%;
+				padding-top:33.33%;
+				left:0;
+				top:33.33%;
+				transition-delay:200ms;
+			}
+			.index-3 {
+				left:calc(100% - 3px);
+				top:34%;
+				polygon { 
+					transform:rotate(90deg) scale(.64);
+					stroke-width:#{$icon-border*1.5};
+					position:absolute;
+				}
+			}
+		}
+	}
+}
+
+@mixin phase-3-icon($width) {
+	.phase-icon {
+		
+		@include phase-icon($width)
+
+		
+		.index-1 {
+			@include circle-border(75%, $icon-border, map-get($colors,phase-3));
+			top:25%;
+		}
+		.index-2 {
+			@include circle-fill(25%, map-get($colors,phase-3));
+			left:37.5%;
+			top:37.5%;
+		}
+		.index-3 {
+			left:50%;
+		}
+		.index-4 {
+			left:75%;
+			top:calc(25% - #{$icon-border/2});
+			transform: rotate(90deg);
+		}
+		.index-5 {
+			left:50%;
+			top:calc(50% - #{$icon-border});
+		}
+		.index-6 {
+			left:25%;
+			top:calc(25% - #{$icon-border/2});
+			transform: rotate(90deg);
+		}
+		.line {
+			@include line-border(50%, $icon-border, map-get($colors,phase-3));
+		}
+		&:hover {
+			.index-1 {
+				top:37.5%;
+				left:0;
+				width:25%;
+				padding-top:calc(25% - #{$icon-border});
+				transition-delay:500ms;
+			}
+			.index-3 {
+				left:calc(12.5% + #{$icon-padding});
+				transition-delay:200ms;
+			}
+			.index-4 {
+				left:calc(50% + #{$icon-padding});
+			}
+			.index-5 {
+				left:calc(50% + #{$icon-padding*2});
+			}
+			.index-6 {
+				left:calc(50% + #{$icon-padding*3});
+				transition-delay:400ms;
+			}
+			.line {
+				width:25%;
+				top:calc(50% - #{$icon-border/2});
+				transform:rotate(90deg);
+			}
+		}
+	}
+}

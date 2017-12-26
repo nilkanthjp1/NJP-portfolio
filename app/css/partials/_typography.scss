@@ -1,0 +1,123 @@
+/*
+	Nilkanth Patel / Portfolio
+
+	Author: Nilkanth Patel
+	Email: me@nilkanthpatel.com
+
+	Description: Structural pieces for the porfolio.
+
+*/
+
+body {
+	font-size: 16px;
+	color: map-get($colors, body);
+}
+
+h1, h2, h3, h4, h5, h6, p, label {
+	position: relative;
+	font-family: "proxima-nova", "Helvetica Neue", Arial, Verdana, sans-serif;
+	margin: 0; padding: 0;
+	line-height: 1;
+}
+
+a {
+	font-family: "proxima-nova", "Helvetica Neue", Arial, Verdana, sans-serif;
+	color: map-get($colors, link);
+	text-decoration: none;
+	cursor:pointer;
+	transition:500ms all ease;
+
+	&:hover, &:active, &:visited {
+		text-decoration: none;
+	}
+	&:hover {
+		color: map-get($colors, link-hover);
+	}
+}
+
+h1 {
+	@include h1;
+	text-align: center;
+	padding: 0 0 15px;
+}
+
+h2 {
+	@include h2;
+}
+
+h3 {
+	@include h3;
+	padding: 0 0 20px;
+}
+
+h4 {
+	@include h4;	
+	padding: 0; margin: 0 0 3px;
+}
+
+p {
+	margin: 0 0 20px;
+	padding: 0;
+	line-height: 24px;
+	font-size:16px;
+	font-weight:300;
+	color: map-get($colors, body);
+
+	&.centered {
+		text-align:center;
+	}
+}
+
+ul, ol, dl {
+	margin: 0;
+	padding: 0;
+	color: map-get($colors, body);
+	li {
+		list-style:none;
+		padding:0; margin:0;		
+	}
+}
+
+@media #{$media-desktop} {
+	h3 {
+		font-size: 16px;
+	}
+	p {
+		line-height:20px;
+	}
+}
+
+@media #{$media-tablet} {
+	h1 {
+		font-size: 48px;
+	}
+	h2 {
+		font-size: 32px;
+	}
+	h3 {
+		font-size: 14px;
+	}
+	p {
+		font-size:13px;
+		line-height:15px;
+	}
+}
+
+@media #{$media-mobile} {
+	h1 {
+		font-size: 36px;
+		text-align: left;
+	}
+	h2 {
+		font-size: 24px;
+		text-align: left;
+	}
+	h3 {
+		font-size: 14px;
+		text-align: left;
+	}
+	p {
+		font-size:13px;
+		line-height:15px;
+	}
+}
